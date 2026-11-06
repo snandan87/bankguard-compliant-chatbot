@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 
-
+# Helper function to restructure retrieved Chroma vector chunks into an executive banking compliance response
 def restructure_with_local_engine(prompt: str, retrieved_chunks: List[Dict[str, Any]]) -> str:
     """
     Synthesizes and restructures retrieved Chroma vector chunks into an executive
