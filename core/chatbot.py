@@ -74,7 +74,7 @@ STRICT RESTRUCTURING GUIDELINES:
             except Exception as e:
                 print(f"Warning: Could not initialize ChatAnthropic: {e}")
 
-    def process_turn(self, raw_user_message: str, customer_id: str = "CUST-88412") -> Dict[str, Any]:
+    def process_turn(self, raw_user_message: str) -> Dict[str, Any]:
         """
         Executes complete RAG lifecycle:
         Stage 1: Injection Defense
