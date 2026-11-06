@@ -4,12 +4,34 @@ Powered by LangChain, Claude & Chroma Vector DB.
 Focuses purely on banking regulatory compliance policies (BSA/AML, Reg E, FDIC, Lending Rules).
 """
 
+import os
+import sys
+
+# ==============================================================================
+# 1. Initialize Python Path
+# ==============================================================================
+# Get the absolute path of the directory containing app.py (the 'ui' folder)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Get the parent directory (the project root folder)
+root_dir = os.path.dirname(current_dir)
+
+# Add the project root to Python's search path if it's not already there
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+
+#=================LOAD UI=========================
+
+
 import streamlit as st
 
-from util.config import COMPLIANCE_STANDARDS
 from database.encrypted_db import EncryptedBankingVault
 from core.rag_engine import PolicyRAGEngine
 from core.chatbot import BankingCompliantAgent
+from config.config import COMPLIANCE_STANDARDS
+
+
 
 st.set_page_config(
     page_title="BankGuard - POC",

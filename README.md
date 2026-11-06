@@ -11,3 +11,7 @@
 - Upload PDF policy manuals via the Streamlit interface.
 - Documents are chunked and stored in Chroma Vector DB.
 - Queries perform vector similarity search to ground responses.
+#### Currently We re using only Simple Data Guardrail and RAG using Chroma Vector DB/Claude/Lang Chain, in next part will do enhancement(Audit Logging/Dynamic Data Masking) on this as suggeste by team.
+
+
+

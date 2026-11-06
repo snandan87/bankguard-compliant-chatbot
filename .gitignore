@@ -17,6 +17,8 @@ ENV/
 .DS_Store
 Thumbs.db
 data/
+
 # Log files and runtime data (if your app logs times/outputs)
 *.log
 *.tmp
+.env

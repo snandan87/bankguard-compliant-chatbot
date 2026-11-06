@@ -11,6 +11,9 @@ from typing import Dict, List, Optional
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from .models import CustomerProfile, CustomerAccount, AuditTrailEntry
 
+# ===================================================
+# Will use following for AES-256 Field-Level Envelope Encryption
+#In next Enhancement will use those method 
 
 class EncryptedBankingVault:
     def __init__(self, master_key_passphrase: Optional[str] = None):
