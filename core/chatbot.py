@@ -119,7 +119,21 @@ STRICT RESTRUCTURING GUIDELINES:
                     HumanMessage(content=sanitized_prompt)
                 ]
                 claude_response = self.llm.invoke(messages)
-                reply_text = claude_response.content
+                
+                # ==============================================================
+                # FIX: EXTRACT PLAIN TEXT FROM CLAUDE'S RAW BLOCKS RESPONSE
+                # ==============================================================
+                raw_content = claude_response.content
+                
+                if isinstance(raw_content, list):
+                    clean_text = ""
+                    for block in raw_content:
+                        if isinstance(block, dict) and block.get("type") == "text":
+                            clean_text += block.get("text", "")
+                    reply_text = clean_text
+                else:
+                    reply_text = str(raw_content)
+                
             except Exception as err:
                 print(f"LLM generation failed, running local RAG synthesizer: {err}")
                 reply_text = restructure_with_local_engine(sanitized_prompt, retrieved_chunks)
@@ -128,6 +142,9 @@ STRICT RESTRUCTURING GUIDELINES:
             reply_text = restructure_with_local_engine(sanitized_prompt, retrieved_chunks)
 
         print(f"DEBUG: Final synthesized reply LLM: '{reply_text}'")
+        print(f"DEBUG: PII entities detected:'{pii_entities}'")
+        print(f"================================")
+    
         # 5. Audit Logging
         self.vault.log_audit_event(
             actor="COMPLIANCE_USER",
