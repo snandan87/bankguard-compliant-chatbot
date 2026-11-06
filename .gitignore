@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (Very important to ignore!)
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# VS Code specific files
+.vscode/
+
+# OS generated files (like Mac timestamp/index files)
+.DS_Store
+Thumbs.db
+data/
+# Log files and runtime data (if your app logs times/outputs)
+*.log
+*.tmp
