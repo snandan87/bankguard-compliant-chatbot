@@ -138,14 +138,14 @@ STRICT RESTRUCTURING GUIDELINES:
                 print(f"LLM generation failed, running local RAG synthesizer: {err}")
                 reply_text = restructure_with_local_engine(sanitized_prompt, retrieved_chunks)
         else:
-            # Local high-fidelity RAG restructuring engine when operating offline
+            # Local high restructuring engine when operating offline
             reply_text = restructure_with_local_engine(sanitized_prompt, retrieved_chunks)
 
         print(f"DEBUG: Final synthesized reply LLM: '{reply_text}'")
         print(f"DEBUG: PII entities detected:'{pii_entities}'")
         print(f"================================")
     
-        # 5. Audit Logging
+        # 5. Audit Logging - not in use currently
         self.vault.log_audit_event(
             actor="COMPLIANCE_USER",
             action="RAG_POLICY_SYNTHESIS",
